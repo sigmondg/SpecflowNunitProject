@@ -1,0 +1,21 @@
+﻿Test Plan for API:
+
+Get Requests
+-> https://petstore.swagger.io/v2/user/user1 - assertions of values - Done
+-> https://petstore.swagger.io/v2/user/user5678 - status code NOTFOUND- Done
+-> https://petstore.swagger.io/v2/user/login - status code OK - Done
+-> https://petstore.swagger.io/v2/user/logout - status code OK - Done
+
+Post Requests
+-> https://petstore.swagger.io/v2/user    - creation of user - assert status code OK - Done
+
+Put Requests
+-> https://petstore.swagger.io/v2/user/{username} -> status code OK - Done
+
+Delete Requests
+->https://petstore.swagger.io/v2/user/{username} -> good username - status code OK - done
+->https://petstore.swagger.io/v2/user/{username} -> bad username -  status code NOTFOUND - done
+
+
+	
+

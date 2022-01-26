@@ -1,0 +1,12 @@
+﻿Test Plan For SauceDemo Application :
+
+- Open https://www.saucedemo.com/
+- Login using the following credentials : standard_user/ secret_sauce
+- Login with invalid credentials
+- Add the "Sauce Labs Fleece Jacket" item to the cart.
+- Select the cart and assert that the item is present then click checkout
+- Assert that the page has the following values:
+	-> Item Tottal 49.99
+	-> Tax 4.00
+	-> Total 53.99
+- Click finish and verify that the order has been dispatched.
