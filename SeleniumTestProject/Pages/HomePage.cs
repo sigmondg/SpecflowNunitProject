@@ -1,10 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiverTestTestProject.Pages
 {
@@ -18,12 +12,12 @@ namespace RiverTestTestProject.Pages
             loginPage = new LoginPage(driver);
         }
 
-        
+
         // ui element
         public IWebElement btnAddToCart => driver.FindElement(By.Id("add-to-cart-sauce-labs-fleece-jacket"));
         //public IWebElement btnRemoveFromCart=> driver.FindElement(By.Id("remove-sauce-labs-fleece-jacket"));
-        
-        
+
+
         //actions
         public void LaunchApplicationAndLogin()
         {
@@ -34,16 +28,17 @@ namespace RiverTestTestProject.Pages
 
         public void ClickAddToCartButton() => btnAddToCart.Click();
 
-        public bool CheckBtnHasBeenChangedToRemove() {
+        public bool CheckBtnHasBeenChangedToRemove()
+        {
 
             if (driver.FindElement(By.Id("remove-sauce-labs-fleece-jacket")) != null)
             {
                 return true;
             }
-           
+
             return false;
         }
 
-       
+
     }
 }

@@ -24,24 +24,24 @@ namespace SeleniumTestProject
         {
             RestRequest request = new RestRequest("/user", Method.Post);
 
-            
+
             request.AddJsonBody(new
             {
-                id= 1,
+                id = 1,
                 username = "sigmondgatt",
                 firstName = "sigmond",
                 lastName = "gatt",
                 email = "gattsigmond@gmail.com",
-                password= "1234",
-                phone =  "12345678",
+                password = "1234",
+                phone = "12345678",
                 userStatus = 0
             });
-            
+
             RestResponse response = await client.ExecuteAsync(request);
             Assert.IsTrue(response.IsSuccessful);
-          
+
         }
-        
+
         [Test]
         public async Task getAValidUserAndValidateData()
         {
@@ -51,21 +51,21 @@ namespace SeleniumTestProject
 
             RestResponse response = await client.ExecuteAsync(request);
             ApiResProperty data = JsonConvert.DeserializeObject<ApiResProperty>(response.Content);
-            Assert.AreEqual(1,data.Id);
+            Assert.AreEqual(1, data.Id);
             Assert.AreEqual("sigmondgatt", data.Username);
             Assert.AreEqual("sigmond", data.FirstName);
             Assert.AreEqual("gatt", data.LastName);
-            Assert.AreEqual("gattsigmond@gmail.com",data.Email);
+            Assert.AreEqual("gattsigmond@gmail.com", data.Email);
             Assert.AreEqual("1234", data.Password);
             Assert.AreEqual("12345678", data.Phone);
             Assert.AreEqual(0, data.UserStatus);
-            
+
         }
 
         [Test]
         public async Task updateAUser()
-        { 
-            
+        {
+
             RestRequest request = new RestRequest("/user/sigmondgatt", Method.Put);
             request.AddJsonBody(new
             {
@@ -85,11 +85,11 @@ namespace SeleniumTestProject
         }
 
         [Test]
-        public async Task validateUpdatedUser() 
+        public async Task validateUpdatedUser()
         {
-            
+
             await updateAUser();
-            
+
             RestRequest request = new RestRequest("/user/sigmondgatt", Method.Get);
 
             RestResponse response = await client.ExecuteAsync(request);
@@ -108,7 +108,7 @@ namespace SeleniumTestProject
         }
 
         [Test]
-        public async Task deleteValidUsername() 
+        public async Task deleteValidUsername()
         {
             RestRequest request = new RestRequest("/user/sigmondgatt", Method.Delete);
             RestResponse response = await client.ExecuteAsync(request);

@@ -1,10 +1,5 @@
 ﻿using NUnit.Framework;
 using RiverTestTestProject.Pages;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
 
@@ -21,7 +16,7 @@ namespace RiverTestTestProject.Steps
         [Given(@"that I am logged in on saucedemo homepage and added an item to cart")]
         public void GivenThatIAmLoggedInOnSaucedemoHomepageAndAddedAnItemToCart()
         {
-            
+
             homePage.LaunchApplicationAndLogin();
             homePage.ClickAddToCartButton();
         }
@@ -57,7 +52,7 @@ namespace RiverTestTestProject.Steps
         public void GivenIFillUpTheDetials(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
-            checkoutPage.FillCheckoutInformation((string)data.firstName,(string)data.lastName,(string)data.zipCode);
+            checkoutPage.FillCheckoutInformation((string)data.firstName, (string)data.lastName, (string)data.zipCode);
         }
 
         [Then(@"i should click continue and see the second step of the checkout page")]
@@ -66,7 +61,7 @@ namespace RiverTestTestProject.Steps
             checkoutPage.ClickbtnContinue();
             Assert.AreEqual("https://www.saucedemo.com/checkout-step-two.html", checkoutPage.isUrlSecondStepValid());
             Driver.CloseDriver();
-            
+
 
         }
 
@@ -80,13 +75,13 @@ namespace RiverTestTestProject.Steps
         public void ThenINeedToCheckThatTheFollowingValuesMatches(Table table)
         {
             dynamic data = table.CreateDynamicInstance();
-            Assert.AreEqual(data.itemTotal,checkoutPage.returnItemTotal());
+            Assert.AreEqual(data.itemTotal, checkoutPage.returnItemTotal());
             Assert.AreEqual(data.tax, checkoutPage.returnTax());
             Assert.AreEqual(data.total, checkoutPage.returnTotal());
             Driver.CloseDriver();
         }
 
-       
+
 
         [Given(@"i click finish to complete the checkout")]
         public void GivenIClickFinishToCompleteTheCheckout()
@@ -97,7 +92,7 @@ namespace RiverTestTestProject.Steps
         [Then(@"i should see a message which verifies my checkout\.")]
         public void ThenIShouldSeeAMessageWhichVerifiesMyCheckout_()
         {
-            Assert.AreEqual("COMPLETE!",checkoutPage.returnOrderStatus());
+            Assert.AreEqual("COMPLETE!", checkoutPage.returnOrderStatus());
             Driver.CloseDriver();
         }
 

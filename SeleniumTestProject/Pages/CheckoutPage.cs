@@ -1,10 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RiverTestTestProject.Pages
 {
@@ -12,7 +7,7 @@ namespace RiverTestTestProject.Pages
     {
         IWebDriver driver;
         LoginPage loginPage = null;
-   
+
         public CheckoutPage(IWebDriver pardriver)
         {
             driver = pardriver;
@@ -37,7 +32,8 @@ namespace RiverTestTestProject.Pages
 
         public void ClickCartButton() => btnCart.Click();
 
-        public bool CheckIfItemIsValid() {
+        public bool CheckIfItemIsValid()
+        {
 
             if (txtFleeceJacket != null)
             {
@@ -48,9 +44,9 @@ namespace RiverTestTestProject.Pages
 
         public void ClickBtnCheckout() => btnCheckout.Click();
 
-        public String isUrlFirstStepValid(){return driver.Url;}
+        public String isUrlFirstStepValid() { return driver.Url; }
 
-        public void FillCheckoutInformation(string firstName, string lastName,string zipCode) 
+        public void FillCheckoutInformation(string firstName, string lastName, string zipCode)
         {
             inptFirstName.SendKeys(firstName);
             inptLastName.SendKeys(lastName);
@@ -59,14 +55,14 @@ namespace RiverTestTestProject.Pages
 
         public void ClickbtnContinue() => btnContinue.Click();
 
-        public String isUrlSecondStepValid() { return driver.Url;}
+        public String isUrlSecondStepValid() { return driver.Url; }
 
-        public double returnItemTotal() => Convert.ToDouble(txtItemTotal.Text.Substring(txtItemTotal.Text.IndexOf('$')+1, txtItemTotal.Text.Length - (txtItemTotal.Text.IndexOf('$')+1))); 
+        public double returnItemTotal() => Convert.ToDouble(txtItemTotal.Text.Substring(txtItemTotal.Text.IndexOf('$') + 1, txtItemTotal.Text.Length - (txtItemTotal.Text.IndexOf('$') + 1)));
 
-        public double returnTax() =>  Convert.ToDouble(txtTax.Text.Substring(txtTax.Text.IndexOf('$') + 1, txtTax.Text.Length - (txtTax.Text.IndexOf('$') + 1)));
+        public double returnTax() => Convert.ToDouble(txtTax.Text.Substring(txtTax.Text.IndexOf('$') + 1, txtTax.Text.Length - (txtTax.Text.IndexOf('$') + 1)));
 
         public double returnTotal() => Convert.ToDouble(txtTotal.Text.Substring(txtTotal.Text.IndexOf('$') + 1, txtTotal.Text.Length - (txtTotal.Text.IndexOf('$') + 1)));
-       
+
         public void clickBtnFinish() => btnFinish.Click();
 
         public string returnOrderStatus() => txtOrderStatus.Text.Substring(txtOrderStatus.Text.IndexOf(":") + 2, txtOrderStatus.Text.Length - (txtOrderStatus.Text.IndexOf(":") + 2));
